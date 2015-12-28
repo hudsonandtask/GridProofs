@@ -5,7 +5,7 @@ version 0.15.1.
 
 ## Build & development
 
-Run `gulp build` for building and `gulp start:server` for preview.
+Run `gulp build` for building and `gulp start:server` for preview. used gulp instead of grunt
 
 ## Testing
 
