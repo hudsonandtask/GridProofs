@@ -15,17 +15,17 @@
       .when('/uiGrid', {
         templateUrl: 'app/uiGrid/uiGrid.html',
         controller: 'uiGridController',
-        controllerAs: 'uiGrid'
+        controllerAs: 'uiGridData'
       })
       .when('/SlickGrid', {
         templateUrl: 'app/SlickGrid/SlickGrid.html',
         controller: 'slickGridController',
-                        controllerAs: 'SlickGridData'
+        controllerAs: 'SlickGridData'
       })
       .when('/agGrid', {
         templateUrl: 'app/agGrid/agGrid.html',
         controller: 'agGridController',
-                        controllerAs: 'agGridData'
+        controllerAs: 'agGridData'
       })
       .otherwise({
         redirectTo: '/'

@@ -6,7 +6,8 @@
     .controller('uiGridController', uiGridController);
 
   /** @ngInject */
-  function uiGridController(dataCreationService) {
-    alert(dataCreationService.initializeData());
+  function uiGridController($scope, dataCreationService) {
+    var vm = this;
+    vm.data = dataCreationService.initializeData(10);
   }
 })();

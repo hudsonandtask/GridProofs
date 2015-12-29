@@ -16,6 +16,14 @@
 
         var statuses = ['Funded', 'Undesignated', 'Under App', 'Index Lockes', 'Rate Locked'];
 
+        var arraysIndex = Math.round(Math.random() * 1000, 0) % (cityNames.length - 1);
+        var initDate = new Date('01/01/2014');
+        var date = randomDate(initDate, new Date('01/01/2016')).toLocaleDateString('en-US');
+
+        var futureDate = new Date(date);
+        futureDate.setYear(futureDate.getFullYear() + 30);
+        futureDate = futureDate.toLocaleDateString('en-US');
+
         initializeData(10);
 
         function getData(numberOfRecords) {
@@ -28,28 +36,56 @@
         }
 
         function initializeData(numberOfRecords) {
-            debugger;
             var _data = [];
             for (var index = 0; index < numberOfRecords; index++){
                 _data.push(angular.copy(baseStructure));
             }
-            _data.forEach(function(element, index) {
-                element.loanNumber = generateNumber();
+            _data.forEach(function (element, index) {
+                element.poolDesignation = "Undesignated";
+                element.loanNumber = generateNumber(10000000, 0,0);
                 element.status = generateRandomStatus();
                 element.propertyName = generatePropertyName();
-                element.propertyCount = generateNumber();
-                element.OriginalLoanAmount = generateCurrNumber();
-                element.city = generateCityName();
-                element.state = generateStateName();
-                element.county = generateCountyName();
-                element.msa = generateMSAName();
-                element.region = generateRegionName();
+                element.propertyCount = generateNumber(3, 0,1);
+                element.OriginalLoanAmount = generateCurrNumber(100000000, 2,0);
+                element.city = generateCityName(arraysIndex);
+                element.state = generateStateName(arraysIndex);
+                element.county = generateCountyName(arraysIndex);
+                element.msa = generateMSAName(arraysIndex);
+                element.region = generateRegionName(arraysIndex);
                 element.seller = generateSellerName();
-                element.loanTerm = generateNumber();
-                element.ioPeriod = generateNumber();
+                element.loanTerm = generateNumber(120, 0,24);
+                element.ioPeriod = generateNumber(120, 0,24);
                 element.initialFixedPeriod = '';
                 element.rateType = "Fixed";
                 element.noteRate = generateNumber(6.54, 2, 1.50);
+                element.maturityDate = futureDate;
+                element.prepayProvision = "YM1%(113)1%(3)";
+                element.UWLTV = generateNumber(100.00, 2, 50.25);
+                element.CutoffLTV = "";
+                element.UWDSCR = "1.300";
+                element.rateLockDate = '';
+                element.projectedFundingDate = '';
+                element.mandatoryFundingDate = '';
+                element.actualFundingDate = '';
+                element.leaseUpIndicator = "No";
+                element.expectedStabilizationDate = "",
+                element.loanPurpose = "Refinance",
+                element.currentBalance = generateCurrNumber(1000000000, 2,0),
+                element.cutoffBalance = "";
+                element.crossedLoans = "";
+                element.relatedLoans = "";
+                element.productType = "Conventional";
+                element.propertySubType = "Garden";
+                element.ageRestricted = "";
+                element.student = "";
+                element.military = "";
+                element.independentLiving = "";
+                element.assistedLiving = "";
+                element.alzheimersMemoryCare = "";
+                element.skilledNursing = "";
+                element.commercialIncome = "";
+                element.MFCMComments = "Removed from 30 due to pref eq.";
+                element.dateCreated = "04/10/2014"
             });
             return _data;
         }
