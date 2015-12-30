@@ -3,7 +3,7 @@
 
   angular
     .module('gridProofs')
-    .controller('agGridController', agGridController);
+    .controller('agGridController2', agGridController);
 
   /** @ngInject */
   function agGridController($scope, dataCreationService) {
@@ -14,7 +14,5 @@
         columnDefs: columnDefs,
         rowData: agGridData
     };
-
   }
-
 })();

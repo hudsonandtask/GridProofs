@@ -7,9 +7,9 @@
 
         var data = [];
         var cityNames = ['Lansdale', 'Santa Rose', 'Richmond', 'Nashville', 'Austin'];
-        var stateNames = ['PA','CA','VA','TN','TX'];
-        var countyNames =[ 'Montgomery', 'Sonoma County','Richmond City', 'Davidson','Travis County'];
-        var msaNames =[ 'Philadelphia', 'Sonoma County','Richmond-Petersburg, VA', 'Nashville-Davidson, TN','Austin-Round Rock, TX'];
+        var stateNames = ['PA', 'CA', 'VA', 'TN', 'TX'];
+        var countyNames = ['Montgomery', 'Sonoma County', 'Richmond City', 'Davidson', 'Travis County'];
+        var msaNames = ['Philadelphia', 'Sonoma County', 'Richmond-Petersburg, VA', 'Nashville-Davidson, TN', 'Austin-Round Rock, TX'];
         var regionNames = ['Northeast', 'West', 'Southeast', 'Southeast', 'Central'];
         var sellerNames = ['Berkadia Commercial Mortgage LLC', 'CBRE Capital Markets', 'Wells Fargo MultiFamily Capital', 'PNC Real Estate'];
         var propertyNames = ['Station Square', 'Park Lane Villas East', 'Broadstone Great Hills', 'Concord Square', 'Manchester Apartments'];
@@ -35,24 +35,24 @@
 
         function initializeData(numberOfRecords) {
             var _data = [];
-            for (var index = 0; index < numberOfRecords; index++){
+            for (var index = 0; index < numberOfRecords; index++) {
                 _data.push(angular.copy(baseStructure));
             }
             _data.forEach(function (element, index) {
                 element.poolDesignation = "Undesignated";
-                element.loanNumber = generateNumber(10000000, 0,0);
+                element.loanNumber = generateNumber(10000000, 0, 0);
                 element.status = generateRandomStatus();
                 element.propertyName = generatePropertyName();
-                element.propertyCount = generateNumber(3, 0,1);
-                element.OriginalLoanAmount = generateCurrNumber(100000000, 2,0);
+                element.propertyCount = generateNumber(3, 0, 1);
+                element.OriginalLoanAmount = generateCurrNumber(100000000, 2, 0);
                 element.city = generateCityName(arraysIndex);
                 element.state = generateStateName(arraysIndex);
                 element.county = generateCountyName(arraysIndex);
                 element.msa = generateMSAName(arraysIndex);
                 element.region = generateRegionName(arraysIndex);
                 element.seller = generateSellerName();
-                element.loanTerm = generateNumber(120, 0,24);
-                element.ioPeriod = generateNumber(120, 0,24);
+                element.loanTerm = generateNumber(120, 0, 24);
+                element.ioPeriod = generateNumber(120, 0, 24);
                 element.initialFixedPeriod = '';
                 element.rateType = "Fixed";
                 element.noteRate = generateNumber(6.54, 2, 1.50);
@@ -68,7 +68,7 @@
                 element.leaseUpIndicator = "No";
                 element.expectedStabilizationDate = "",
                 element.loanPurpose = "Refinance",
-                element.currentBalance = generateCurrNumber(1000000000, 2,0),
+                element.currentBalance = generateCurrNumber(1000000000, 2, 0),
                 element.cutoffBalance = "";
                 element.crossedLoans = "";
                 element.relatedLoans = "";
@@ -89,77 +89,71 @@
         }
 
         function getColumnDefinitions(numberOfRecords) {
-            var dataObj = getData(numberOfRecords);
-            var transformedObj = {};
+            var dataObj = getData(numberOfRecords)[0];
+            var columnDefinition = [];
+            var column;
+            for (column in dataObj) {
+                columnDefinition.push({
+                    headerName: column,
+                    field: column
+                });
+            }
 
-            angular.forEach(dataObj, function (value, key) {
-                return  {
-                    headerName: key,
-                    field:key
-                }
-            });
-            // dataObj.map(function (key, value) {
-            //     return {
-            //         headerName: key,
-            //         field:key
-            //     }
-            // });
-                debugger;
-            return dataObj;
+            return columnDefinition;
         }
         //---- Helper Methods
 
-        function generateNumber(multiplier, precision, min){
+        function generateNumber(multiplier, precision, min) {
             var num = Math.round(multiplier * Math.random()).toFixed(precision);
             if (num < min)
-            return min;
+                return min;
             else
-            return num;
+                return num;
         }
 
         function formatCurr(n, currency) {
-            return currency + " " + n.replace(/./g, function(c, i, a) {
-                    return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
-                });
+            return currency + " " + n.replace(/./g, function (c, i, a) {
+                return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+            });
         }
 
-        function generateCurrNumber(multiplier, precision, min){
+        function generateCurrNumber(multiplier, precision, min) {
             var num = Math.round(multiplier * Math.random()).toFixed(precision);
             if (num < min)
-                return formatCurr(min,"$");
+                return formatCurr(min, "$");
             else
-                return formatCurr(num,"$");
+                return formatCurr(num, "$");
         }
 
-        function generateRandomStatus(){
+        function generateRandomStatus() {
             return statuses[Math.round(Math.random() * 1000, 0) % (statuses.length - 1)];
         }
 
-        function generatePropertyName(){
+        function generatePropertyName() {
             return propertyNames[Math.round(Math.random() * 1000, 0) % (propertyNames.length - 1)];
         }
 
-        function generateCityName(index){
+        function generateCityName(index) {
             return cityNames[index];
         }
 
-        function generateStateName(index){
+        function generateStateName(index) {
             return stateNames[index];
         }
 
-        function generateCountyName(index){
+        function generateCountyName(index) {
             return countyNames[index];
         }
 
-        function generateMSAName(index){
+        function generateMSAName(index) {
             return msaNames[index];
         }
 
-        function generateRegionName(index){
+        function generateRegionName(index) {
             return regionNames[index];
         }
 
-        function generateSellerName(){
+        function generateSellerName() {
             return sellerNames[Math.round(Math.random() * 1000, 0) % (sellerNames.length - 1)];
         }
 

@@ -13,7 +13,7 @@
       })
       .when('/uiGrid', {
         templateUrl: 'app/uiGrid/uiGrid.html',
-        controller: 'uiGridController'
+        controller: 'uiGridController2'
       })
       .when('/SlickGrid', {
         templateUrl: 'app/SlickGrid/SlickGrid.html',
@@ -21,7 +21,7 @@
       })
       .when('/agGrid', {
         templateUrl: 'app/agGrid/agGrid.html',
-        controller: 'agGridController'
+        controller: 'agGridController2'
       })
       .otherwise({
         redirectTo: '/'
