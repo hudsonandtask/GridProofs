@@ -1,9 +1,9 @@
-(function() {
+(function () {
   'use strict';
 
   angular
     .module('gridProofs')
-    .controller('uiGridController', uiGridController);
+    .controller('uiGridController2', uiGridController);
 
   /** @ngInject */
   function uiGridController($scope, dataCreationService) {
