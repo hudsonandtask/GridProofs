@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function agGridController($scope, dataCreationService) {
-    var agGridData = dataCreationService.getData(10);
+    var agGridData = dataCreationService.getData(50);
     var columnDefs = dataCreationService.getColumnDefinitions(10, "ag-grid");
 
     $scope.gridOptions = {
