@@ -7,6 +7,12 @@
 
   /** @ngInject */
   function uiGridController($scope, dataCreationService) {
-    $scope.uiGridData = dataCreationService.getData(2);
+    var uiGridData = dataCreationService.getData(10);
+    var columnDefs = dataCreationService.getColumnDefinitions(10, "ui-grid");
+
+    $scope.gridOptions = {
+        columnDefs: columnDefs,
+        data: uiGridData
+    };
   }
 })();

@@ -88,16 +88,28 @@
             return _data;
         }
 
-        function getColumnDefinitions(numberOfRecords) {
+        function getColumnDefinitions(numberOfRecords, grid) {
             var dataObj = getData(numberOfRecords)[0];
             var columnDefinition = [];
             var column;
-            for (column in dataObj) {
-                columnDefinition.push({
-                    headerName: column,
-                    field: column
-                });
+            if (grid == "ag-grid") {
+                for (column in dataObj) {
+                    columnDefinition.push({
+                        headerName: column,
+                        field: column
+                    });
+                }
+            } else {
+                for (column in dataObj) {
+                    columnDefinition.push({
+                        displayName: column,
+                        field: column,
+                        width: "*",
+                        minWidth: 100
+                    });
+                }
             }
+
 
             return columnDefinition;
         }
