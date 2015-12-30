@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container" ng-controller="uiGridController">
     <div>
         <acme-navbar creation-date="main.creationDate"></acme-navbar>
     </div>
-    <div ng-controller="uiGridController as vm">
-        <div ui-grid="vm.data" class="POCGrid"></div>
-    </div>
+
+            <div>
+            <div ui-grid="{ data : uiGridData}" class="POCGrid"></div>
+            </div>
 </div>

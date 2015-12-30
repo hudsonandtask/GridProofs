@@ -7,7 +7,6 @@
 
   /** @ngInject */
   function uiGridController($scope, dataCreationService) {
-    var vm = this;
-    vm.data = dataCreationService.initializeData(10);
+    $scope.uiGridData = dataCreationService.getData(2);
   }
 })();

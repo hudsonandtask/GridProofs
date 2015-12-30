@@ -3,7 +3,7 @@
 
     function dataCreationService(baseStructure) {
         this.getData = getData;
-        this.initializeData = initializeData;
+        this.getColumnDefinitions = getColumnDefinitions;
 
         var data = [];
         var cityNames = ['Lansdale', 'Santa Rose', 'Richmond', 'Nashville', 'Austin'];
@@ -23,8 +23,6 @@
         var futureDate = new Date(date);
         futureDate.setYear(futureDate.getFullYear() + 30);
         futureDate = futureDate.toLocaleDateString('en-US');
-
-        initializeData(10);
 
         function getData(numberOfRecords) {
             if (numberOfRecords) {
@@ -90,6 +88,25 @@
             return _data;
         }
 
+        function getColumnDefinitions(numberOfRecords) {
+            var dataObj = getData(numberOfRecords);
+            var transformedObj = {};
+
+            angular.forEach(dataObj, function (value, key) {
+                return  {
+                    headerName: key,
+                    field:key
+                }
+            });
+            // dataObj.map(function (key, value) {
+            //     return {
+            //         headerName: key,
+            //         field:key
+            //     }
+            // });
+                debugger;
+            return dataObj;
+        }
         //---- Helper Methods
 
         function generateNumber(multiplier, precision, min){

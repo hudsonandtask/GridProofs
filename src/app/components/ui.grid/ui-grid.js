@@ -3076,7 +3076,7 @@ angular.module('ui.grid')
                     '$templateCache', 'gridClassFactory', '$timeout', '$parse', '$compile',
     function ($scope, $elm, $attrs, gridUtil, $q, uiGridConstants,
               $templateCache, gridClassFactory, $timeout, $parse, $compile) {
-      // gridUtil.logDebug('ui-grid controller');
+      gridUtil.logDebug('ui-grid controller');
       debugger;
       var self = this;
 
